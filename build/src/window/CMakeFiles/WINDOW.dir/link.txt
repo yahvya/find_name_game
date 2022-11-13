@@ -1,0 +1,2 @@
+/usr/bin/ar qc libWINDOW.a CMakeFiles/WINDOW.dir/window.c.o CMakeFiles/WINDOW.dir/project.c.o
+/usr/bin/ranlib libWINDOW.a

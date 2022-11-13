@@ -25,11 +25,20 @@
 			choice_indicator_rect.y = langs_rects[*(current_lang)].y;\
 			choice_indicator_rect.h = langs_rects[*(current_lang)].h;
 
+#define SET_RESPONSE for(int i = 0; i < datas->count_of_langs; i++)\
+     {\
+         if(strcmp(datas->langs[*(current_lang)],to_ask_data->langs_values[i]->lang) == 0)\
+         {\
+             response = to_ask_data->langs_values[i]->value;\
+             break;\
+         }\
+	}
+
 // print the lang choice elements on window , return true if success or false if user close window or something failed
 bool make_lang_choice(WindowData window_data,DataGetterReturn* datas,int* current_lang)
 {
 	// start pos
-	int start = (30 * COUNT_OF_INSTRUCTIONS) + 40;
+	int start = (40 * COUNT_OF_INSTRUCTIONS) + 40;
 
 	bool end_well = true;
 	bool quit_loop = false;
@@ -72,7 +81,7 @@ bool make_lang_choice(WindowData window_data,DataGetterReturn* datas,int* curren
 		}
 
 		text_rects[i].x = 10;
-		text_rects[i].y = 30 * (i + 1);
+		text_rects[i].y = 40 * (i + 1);
 		text_rects[i].w = text_surface->w;
 		text_rects[i].h = text_surface->h;
 
@@ -278,15 +287,7 @@ bool ask_player(WindowData window_data,DataGetterReturn* datas,int* current_lang
 	char current_state[35];
 
 	// get the response's the player have to write
-	for(int i = 0; i < datas->count_of_langs; i++)
-	{
-		if(strcmp(datas->langs[*(current_lang)],to_ask_data->langs_values[i]->lang) == 0)
-		{
-			response = to_ask_data->langs_values[i]->value;
-
-			break;
-		}
-	}
+	SET_RESPONSE
 
 
 	memset(player_input,0,sizeof(char) * MAX_LINE_SIZE);
@@ -464,6 +465,8 @@ bool ask_player(WindowData window_data,DataGetterReturn* datas,int* current_lang
 
 								end_choice = true;
 							}
+
+							SET_RESPONSE
 
 							(*count_of_try)--;
 						}

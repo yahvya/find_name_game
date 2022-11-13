@@ -43,7 +43,7 @@ bool init_window(
 		.window_parameters = window_parameters,
 		.window = window,
 		.renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC),
-		.font = TTF_OpenFont(window_parameters.font_path, 19)
+		.font = TTF_OpenFont(window_parameters.font_path, 16)
 	};
 
 	if
