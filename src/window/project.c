@@ -27,9 +27,9 @@
 
 #define SET_RESPONSE for(int inc = 0; inc < datas->count_of_langs; inc++)\
      {\
-         if(strcmp(datas->langs[*(current_lang)],to_ask_data->langs_values[i]->lang) == 0)\
+         if(strcmp(datas->langs[*(current_lang)],to_ask_data->langs_values[inc]->lang) == 0)\
          {\
-             response = to_ask_data->langs_values[i]->value;\
+             response = to_ask_data->langs_values[inc]->value;\
              break;\
          }\
 	}
