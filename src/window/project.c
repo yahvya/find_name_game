@@ -12,11 +12,11 @@
 #define IMAGES_DIMENSION_W 250
 #define IMAGES_DIMENSION_H 220
 
-#define FREE_TEXT_TEXTURES for(int i = 0; i < COUNT_OF_INSTRUCTIONS; i++)\
-			SDL_DestroyTexture(text_textures[i]);
+#define FREE_TEXT_TEXTURES for(int inc = 0; inc < COUNT_OF_INSTRUCTIONS; inc++)\
+			SDL_DestroyTexture(text_textures[inc]);
 
-#define FREE_LANG_TEXTURES for(int i = 0; i < datas->count_of_langs; i++)\
-			SDL_DestroyTexture(lang_textures[i]);
+#define FREE_LANG_TEXTURES for(int inc = 0; inc < datas->count_of_langs; inc++)\
+			SDL_DestroyTexture(lang_textures[inc]);
 
 #define FREE_LANG_ALLOCATED_DATAS free(lang_textures);\
 		free(langs_rects);
@@ -25,7 +25,7 @@
 			choice_indicator_rect.y = langs_rects[*(current_lang)].y;\
 			choice_indicator_rect.h = langs_rects[*(current_lang)].h;
 
-#define SET_RESPONSE for(int i = 0; i < datas->count_of_langs; i++)\
+#define SET_RESPONSE for(int inc = 0; inc < datas->count_of_langs; inc++)\
      {\
          if(strcmp(datas->langs[*(current_lang)],to_ask_data->langs_values[i]->lang) == 0)\
          {\
@@ -98,8 +98,7 @@ bool make_lang_choice(WindowData window_data,DataGetterReturn* datas,int* curren
 		langs_rects == NULL
 	)
 	{
-		for(int i = 0; i < COUNT_OF_INSTRUCTIONS; i++)
-			SDL_DestroyTexture(text_textures[i]);
+		FREE_TEXT_TEXTURES
 
 		if(langs_rects != NULL)
 			free(langs_rects);
