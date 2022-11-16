@@ -1,1 +1,0 @@
-/usr/bin/cc -O2 -g -DNDEBUG CMakeFiles/app.dir/src/app.c.o -o app  src/utils/libUTILS.a src/window/libWINDOW.a -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2 -lSDL2_ttf -lSDL2_image 
